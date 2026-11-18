@@ -9,3 +9,6 @@ node_modules/
 # OS Stuff
 
 .DS_Store
+
+# Test JWT signing key (private) - never commit
+tests/.keys/

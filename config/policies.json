@@ -1,3 +1,422 @@
 {
-  "policies": []
+  "policies": [
+    {
+      "name": "jwt-required",
+      "policyType": "open-id-jwt-auth-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "OpenIdJwtInboundPolicy",
+        "options": {
+          "issuer": "$env(JWT_ISSUER)",
+          "jwkUrl": "$env(JWKS_URL)",
+          "allowUnauthenticatedRequests": false
+        }
+      }
+    },
+    {
+      "name": "jwt-optional",
+      "policyType": "open-id-jwt-auth-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "OpenIdJwtInboundPolicy",
+        "options": {
+          "issuer": "$env(JWT_ISSUER)",
+          "jwkUrl": "$env(JWKS_URL)",
+          "allowUnauthenticatedRequests": true
+        }
+      }
+    },
+    {
+      "name": "login-warn-counter",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "all",
+          "requestsAllowed": 20,
+          "timeWindowMinutes": 1,
+          "headerMode": "none"
+        }
+      }
+    },
+    {
+      "name": "login-warn",
+      "policyType": "custom-code-inbound",
+      "handler": {
+        "module": "$import(./modules/rate-limits)",
+        "export": "warn",
+        "options": {
+          "policy": "login-warn-counter",
+          "threshold": "20 requests/min total"
+        }
+      }
+    },
+    {
+      "name": "login-block",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "all",
+          "requestsAllowed": 100,
+          "timeWindowMinutes": 1,
+          "headerMode": "retry-after"
+        }
+      }
+    },
+    {
+      "name": "auth-warn-counter",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "all",
+          "requestsAllowed": 30,
+          "timeWindowMinutes": 1,
+          "headerMode": "none"
+        }
+      }
+    },
+    {
+      "name": "auth-warn",
+      "policyType": "custom-code-inbound",
+      "handler": {
+        "module": "$import(./modules/rate-limits)",
+        "export": "warn",
+        "options": {
+          "policy": "auth-warn-counter",
+          "threshold": "30 requests/min total"
+        }
+      }
+    },
+    {
+      "name": "auth-block",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "all",
+          "requestsAllowed": 150,
+          "timeWindowMinutes": 1,
+          "headerMode": "retry-after"
+        }
+      }
+    },
+    {
+      "name": "oauth-token-warn-counter",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "all",
+          "requestsAllowed": 10,
+          "timeWindowMinutes": 1,
+          "headerMode": "none"
+        }
+      }
+    },
+    {
+      "name": "oauth-token-warn",
+      "policyType": "custom-code-inbound",
+      "handler": {
+        "module": "$import(./modules/rate-limits)",
+        "export": "warn",
+        "options": {
+          "policy": "oauth-token-warn-counter",
+          "threshold": "10 requests/min total"
+        }
+      }
+    },
+    {
+      "name": "oauth-token-block",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "all",
+          "requestsAllowed": 50,
+          "timeWindowMinutes": 1,
+          "headerMode": "retry-after"
+        }
+      }
+    },
+    {
+      "name": "restapi-warn-counter",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "function",
+          "requestsAllowed": 360,
+          "timeWindowMinutes": 0.1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
+          "headerMode": "none"
+        }
+      }
+    },
+    {
+      "name": "restapi-warn",
+      "policyType": "custom-code-inbound",
+      "handler": {
+        "module": "$import(./modules/rate-limits)",
+        "export": "warn",
+        "options": {
+          "policy": "restapi-warn-counter",
+          "threshold": "60 requests/sec/user"
+        }
+      }
+    },
+    {
+      "name": "restapi-block",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "function",
+          "requestsAllowed": 600,
+          "timeWindowMinutes": 0.1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
+          "headerMode": "retry-after"
+        }
+      }
+    },
+    {
+      "name": "graphql-warn-counter",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "function",
+          "requestsAllowed": 360,
+          "timeWindowMinutes": 0.1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
+          "headerMode": "none"
+        }
+      }
+    },
+    {
+      "name": "graphql-warn",
+      "policyType": "custom-code-inbound",
+      "handler": {
+        "module": "$import(./modules/rate-limits)",
+        "export": "warn",
+        "options": {
+          "policy": "graphql-warn-counter",
+          "threshold": "60 requests/sec/user"
+        }
+      }
+    },
+    {
+      "name": "graphql-block",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "function",
+          "requestsAllowed": 600,
+          "timeWindowMinutes": 0.1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
+          "headerMode": "retry-after"
+        }
+      }
+    },
+    {
+      "name": "data-rest-warn-counter",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "function",
+          "requestsAllowed": 360,
+          "timeWindowMinutes": 0.1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
+          "headerMode": "none"
+        }
+      }
+    },
+    {
+      "name": "data-rest-warn",
+      "policyType": "custom-code-inbound",
+      "handler": {
+        "module": "$import(./modules/rate-limits)",
+        "export": "warn",
+        "options": {
+          "policy": "data-rest-warn-counter",
+          "threshold": "60 requests/sec/user"
+        }
+      }
+    },
+    {
+      "name": "data-rest-block",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "function",
+          "requestsAllowed": 600,
+          "timeWindowMinutes": 0.1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
+          "headerMode": "retry-after"
+        }
+      }
+    },
+    {
+      "name": "mcp-user-warn-counter",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "function",
+          "requestsAllowed": 100,
+          "timeWindowMinutes": 1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
+          "headerMode": "none"
+        }
+      }
+    },
+    {
+      "name": "mcp-user-warn",
+      "policyType": "custom-code-inbound",
+      "handler": {
+        "module": "$import(./modules/rate-limits)",
+        "export": "warn",
+        "options": {
+          "policy": "mcp-user-warn-counter",
+          "threshold": "100 requests/min/user"
+        }
+      }
+    },
+    {
+      "name": "mcp-user-block",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "function",
+          "requestsAllowed": 500,
+          "timeWindowMinutes": 1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
+          "headerMode": "retry-after"
+        }
+      }
+    },
+    {
+      "name": "mcp-total-warn-counter",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "all",
+          "requestsAllowed": 500,
+          "timeWindowMinutes": 1,
+          "headerMode": "none"
+        }
+      }
+    },
+    {
+      "name": "mcp-total-warn",
+      "policyType": "custom-code-inbound",
+      "handler": {
+        "module": "$import(./modules/rate-limits)",
+        "export": "warn",
+        "options": {
+          "policy": "mcp-total-warn-counter",
+          "threshold": "500 requests/min total"
+        }
+      }
+    },
+    {
+      "name": "mcp-total-block",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "all",
+          "requestsAllowed": 1000,
+          "timeWindowMinutes": 1,
+          "headerMode": "retry-after"
+        }
+      }
+    },
+    {
+      "name": "default-warn-counter",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "all",
+          "requestsAllowed": 100,
+          "timeWindowMinutes": 1,
+          "headerMode": "none"
+        }
+      }
+    },
+    {
+      "name": "default-warn",
+      "policyType": "custom-code-inbound",
+      "handler": {
+        "module": "$import(./modules/rate-limits)",
+        "export": "warn",
+        "options": {
+          "policy": "default-warn-counter",
+          "threshold": "100 requests/min total"
+        }
+      }
+    },
+    {
+      "name": "default-block",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "module": "$import(@zuplo/runtime)",
+        "export": "RateLimitInboundPolicy",
+        "options": {
+          "rateLimitBy": "all",
+          "requestsAllowed": 500,
+          "timeWindowMinutes": 1,
+          "headerMode": "retry-after"
+        }
+      }
+    }
+  ]
 }

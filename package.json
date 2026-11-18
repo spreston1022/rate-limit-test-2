@@ -7,7 +7,9 @@
     "dev": "zuplo dev",
     "test": "zuplo test",
     "typecheck": "tsc --noEmit",
-    "docs": "zuplo docs"
+    "docs": "zuplo docs",
+    "generate": "node scripts/generate-config.mjs",
+    "token": "node tests/token.mjs"
   },
   "dependencies": {
     "@zuplo/otel": "^7",
