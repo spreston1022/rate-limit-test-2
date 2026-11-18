@@ -33,8 +33,9 @@ each API category, then forwards the request to the origin unchanged.
   bearer token or Basic auth, so the token is validated when present and
   Basic credentials pass through to the origin.
 
-A user is identified by, in order: the `user_id` claim of the bearer token,
-the `userId` header, the Basic auth username, then the client IP.
+Per-user limits are counted against the `user_id` claim of the validated
+bearer token. A request without that claim (no token, or Basic auth) is
+counted against its client IP instead.
 
 ## Assumptions and open questions
 
@@ -45,9 +46,9 @@ the `userId` header, the Basic auth username, then the client IP.
    600 per 6 seconds). Zuplo recommends windows of 5 seconds or longer for
    consistent enforcement across edge locations; a true 1 second window is
    `timeWindowMinutes: 0.0167` if stricter burst control is wanted.
-4. **Basic auth identity** is not verified by the gateway, so a caller can
-   change their bucket by changing the `userId` header or username. Whether
-   that is acceptable, or whether the key should be the tenant, is open.
+4. **Basic auth requests** carry no `user_id` claim, so on the per-user
+   routes they are limited by client IP. Whether those routes should require
+   a bearer token instead is open.
 5. **Origin and IdP** are placeholders until the real values are known.
 
 ## Configuration
@@ -57,9 +58,6 @@ the `userId` header, the Basic auth username, then the client IP.
 | `ORIGIN_URL`     | Backend that every route forwards to        |
 | `JWT_ISSUER`     | Expected `iss` of bearer tokens             |
 | `JWKS_URL`       | JWKS used to verify bearer tokens           |
-| `USER_CLAIM`     | Optional. Token claim for the user id       |
-| `USER_ID_HEADER` | Optional. Header carrying the user id       |
-| `TENANT_HEADER`  | Optional. Header carrying the tenant        |
 
 Set these in the Zuplo Portal under Settings > Environment Variables for
 deployed environments, and in `.env` locally (`cp .env.example .env`).
