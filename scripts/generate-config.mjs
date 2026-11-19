@@ -125,26 +125,6 @@ for (const tier of tiers) {
       },
     };
   }
-  // Methods a route does not list are answered with 405 here. Without this
-  // they would fall through to the catch-all and reach the origin under the
-  // default limits, skipping this route's policies.
-  for (const method of ALL.filter((m) => !tier.methods.includes(m))) {
-    item[method] = {
-      summary: `${tier.label} (method not allowed)`,
-      operationId: `${tier.id}-${method}-not-allowed`,
-      tags: [tier.label],
-      responses: { 405: { description: "Method not allowed" } },
-      "x-zuplo-route": {
-        corsPolicy: "none",
-        handler: {
-          module: "$import(./modules/rate-limits)",
-          export: "methodNotAllowed",
-          options: { allow: tier.methods.map((m) => m.toUpperCase()).join(", ") },
-        },
-        policies: { inbound: [] },
-      },
-    };
-  }
   paths[tier.path] = item;
 }
 

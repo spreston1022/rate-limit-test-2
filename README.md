@@ -32,8 +32,8 @@ each API category, then forwards the request to the origin unchanged.
 - Each route lists only the methods it needs: POST for `/login` and
   `/oauth/token`, GET and POST for `/api/graphql`, GET, POST and DELETE for
   `/mcp`, the five REST methods for the wildcard API routes, and everything
-  for the catch-all. Any other method on those paths returns 405, so it
-  cannot fall through to the catch-all and bypass the route's policies.
+  for the catch-all. Any other method on those paths falls through to the
+  catch-all and is handled under the default limits.
 - `/mcp` requires a valid bearer token. The per-user API routes accept a
   bearer token or Basic auth, so the token is validated when present and
   Basic credentials pass through to the origin.
