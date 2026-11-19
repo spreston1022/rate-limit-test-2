@@ -55,7 +55,7 @@ counted against its client IP instead.
 
 | Variable         | Purpose                                     |
 | ---------------- | ------------------------------------------- |
-| `ORIGIN_URL`     | Backend that every route forwards to        |
+| `ORIGIN_URL`     | Backend that every route forwards to. Defaults to `https://echo.zuplo.io` when unset |
 | `JWT_ISSUER`     | Expected `iss` of bearer tokens             |
 | `JWKS_URL`       | JWKS used to verify bearer tokens           |
 

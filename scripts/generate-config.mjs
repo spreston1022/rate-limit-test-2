@@ -110,7 +110,9 @@ for (const tier of tiers) {
         handler: {
           module: "$import(@zuplo/runtime)",
           export: "urlForwardHandler",
-          options: { baseUrl: "${env.ORIGIN_URL}" },
+          // Falls back to an echo service so the gateway is testable before the
+          // real origin is known. Set ORIGIN_URL to override.
+          options: { baseUrl: "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}" },
         },
         policies: { inbound },
       },
