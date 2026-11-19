@@ -59,8 +59,10 @@ counted against its client IP instead.
 ## Configuration
 
 The origin, token issuer and JWKS URL are constants at the top of
-`scripts/generate-config.mjs`. They are placeholders: the origin is an echo
-service and the issuer is the stand-in IdP. Change them there and run
+`scripts/generate-config.mjs`. They are placeholders: the origin is Postman
+Echo and the issuer is the stand-in IdP. Postman Echo only has one endpoint
+per method, so each request is rewritten to it (`POST /login` goes to
+`/post`) rather than forwarded with its original path. Change them there and run
 `npm run generate`.
 
 ## Testing

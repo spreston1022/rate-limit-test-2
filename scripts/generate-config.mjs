@@ -31,7 +31,12 @@ const tiers = [
 
 // Placeholders until the real values are known. Tokens are minted by
 // `npm run token` and verified with the public key this gateway serves.
-const ORIGIN_URL = "https://echo.zuplo.io";
+// Postman Echo only answers on /get, /post, /put, /patch and /delete, so each
+// route is rewritten to the endpoint for its method instead of forwarding
+// the original path. HEAD and OPTIONS go to /get.
+const ORIGIN_URL = "https://postman-echo.com";
+const originUrl = (method) =>
+  `${ORIGIN_URL}/${["head", "options"].includes(method) ? "get" : method}`;
 const JWT_ISSUER = "https://test-idp.rate-limit-test.local";
 const JWKS_URL =
   "https://rate-limit-test-2-main-d5e669e.oracle-poc.zuplo.work/.well-known/jwks.json";
@@ -118,8 +123,8 @@ for (const tier of tiers) {
         corsPolicy: "none",
         handler: {
           module: "$import(@zuplo/runtime)",
-          export: "urlForwardHandler",
-          options: { baseUrl: ORIGIN_URL },
+          export: "urlRewriteHandler",
+          options: { rewritePattern: originUrl(method), forwardSearch: true },
         },
         policies: { inbound },
       },
