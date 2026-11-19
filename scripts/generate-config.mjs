@@ -8,23 +8,36 @@ import { writeFileSync } from "node:fs";
 const SEC = { minutes: 0.1, factor: 6, unit: "sec" };
 const MIN = { minutes: 1, factor: 1, unit: "min" };
 
+const ALL = ["get", "post", "put", "patch", "delete", "head", "options"];
+const REST = ["get", "post", "put", "patch", "delete"];
+
 // Order matters: routes match top to bottom, so the catch-all goes last.
 const tiers = [
-  { id: "login", label: "Login", path: "/login", warn: 2, block: 5, window: MIN }, // TEMP: lowered for testing (spec: warn 20, block 100),
-  { id: "auth", label: "Authentication APIs", path: "/api/auth/(.*)", warn: 30, block: 150, window: MIN },
-  { id: "oauth-token", label: "OAuth token", path: "/oauth/token", warn: 10, block: 50, window: MIN },
-  { id: "restapi", label: "Public REST APIs", path: "/api/restapi/(.*)", warn: 60, block: 100, window: SEC, perUser: true, jwt: "optional" },
-  { id: "graphql", label: "GraphQL APIs", path: "/api/graphql", warn: 60, block: 100, window: SEC, perUser: true, jwt: "optional" },
-  { id: "data-rest", label: "Data MS REST APIs", path: "/data/rest/(.*)", warn: 60, block: 100, window: SEC, perUser: true, jwt: "optional" },
+  { id: "login", label: "Login", path: "/login", methods: ["post"], warn: 2, block: 5, window: MIN }, // TEMP: lowered for testing (spec: warn 20, block 100),
+  { id: "auth", label: "Authentication APIs", path: "/api/auth/(.*)", methods: REST, warn: 30, block: 150, window: MIN },
+  { id: "oauth-token", label: "OAuth token", path: "/oauth/token", methods: ["post"], warn: 10, block: 50, window: MIN },
+  { id: "restapi", label: "Public REST APIs", path: "/api/restapi/(.*)", methods: REST, warn: 60, block: 100, window: SEC, perUser: true, jwt: "optional" },
+  { id: "graphql", label: "GraphQL APIs", path: "/api/graphql", methods: ["get", "post"], warn: 60, block: 100, window: SEC, perUser: true, jwt: "optional" },
+  { id: "data-rest", label: "Data MS REST APIs", path: "/data/rest/(.*)", methods: REST, warn: 60, block: 100, window: SEC, perUser: true, jwt: "optional" },
   {
-    id: "mcp", label: "MCP", path: "/mcp", jwt: "required",
+    id: "mcp", label: "MCP", path: "/mcp", methods: ["get", "post", "delete"], jwt: "required",
     limits: [
       { id: "mcp-user", warn: 100, block: 500, window: MIN, perUser: true },
       { id: "mcp-total", warn: 500, block: 1000, window: MIN },
     ],
   },
-  { id: "default", label: "Default / other paths", path: "/(.*)", warn: 100, block: 500, window: MIN },
 ];
+
+// The catch-all excludes every path above. Otherwise a method that a route
+// does not list (say PATCH /mcp) would fall through to it and reach the
+// origin under the default limits, skipping that route's policies.
+const reserved = [...tiers.map((t) => t.path), "/.well-known/jwks.json"].map((p) =>
+  p.endsWith("/(.*)") ? p.slice(1, -4) : `${p.slice(1).replaceAll(".", "\\.")}$`,
+);
+tiers.push({
+  id: "default", label: "Default / other paths", path: `/((?!${reserved.join("|")}).*)`,
+  methods: ALL, warn: 100, block: 500, window: MIN,
+});
 
 // Bearer tokens are validated against the stand-in IdP: tokens minted by
 // `npm run token`, verified with the public key this gateway serves. Replace
@@ -33,7 +46,6 @@ const JWT_ISSUER = "https://test-idp.rate-limit-test.local";
 const JWKS_URL =
   "https://rate-limit-test-2-main-d5e669e.oracle-poc.zuplo.work/.well-known/jwks.json";
 
-const METHODS = ["get", "post", "put", "patch", "delete", "head", "options"];
 const identifier = { module: "$import(./modules/rate-limits)", export: "userKey" };
 
 const jwtPolicy = (name, allowUnauthenticatedRequests) => ({
@@ -102,7 +114,7 @@ for (const tier of tiers) {
     .map((l) => `warn at ${describe(l, l.warn)}, block at ${describe(l, l.block)}`)
     .join("; ");
   const item = { "x-zuplo-path": { pathMode: "url-pattern" } };
-  for (const method of METHODS) {
+  for (const method of tier.methods) {
     item[method] = {
       summary: tier.label,
       description: `Rate limits: ${summary}.`,

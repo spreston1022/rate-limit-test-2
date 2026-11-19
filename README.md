@@ -29,6 +29,11 @@ each API category, then forwards the request to the origin unchanged.
 - `modules/rate-limits.ts` has the two pieces of custom code: `userKey`
   (who a per-user limit is counted against) and `warn` (the non-blocking
   warning threshold).
+- Each route lists only the methods it needs: POST for `/login` and
+  `/oauth/token`, GET and POST for `/api/graphql`, GET, POST and DELETE for
+  `/mcp`, the five REST methods for the wildcard API routes, and everything
+  for the catch-all. Any other method on those paths returns 404; the
+  catch-all excludes them so it cannot be used to bypass a route's policies.
 - `/mcp` requires a valid bearer token. The per-user API routes accept a
   bearer token or Basic auth, so the token is validated when present and
   Basic credentials pass through to the origin.
