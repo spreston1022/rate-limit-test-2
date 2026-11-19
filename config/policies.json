@@ -34,7 +34,7 @@
         "export": "RateLimitInboundPolicy",
         "options": {
           "rateLimitBy": "all",
-          "requestsAllowed": 20,
+          "requestsAllowed": 2,
           "timeWindowMinutes": 1,
           "headerMode": "none"
         }
@@ -48,7 +48,7 @@
         "export": "warn",
         "options": {
           "policy": "login-warn-counter",
-          "threshold": "20 requests/min total"
+          "threshold": "2 requests/min total"
         }
       }
     },
@@ -60,7 +60,7 @@
         "export": "RateLimitInboundPolicy",
         "options": {
           "rateLimitBy": "all",
-          "requestsAllowed": 100,
+          "requestsAllowed": 5,
           "timeWindowMinutes": 1,
           "headerMode": "retry-after"
         }

@@ -40,7 +40,7 @@
       },
       "get": {
         "summary": "Login",
-        "description": "Rate limits: warn at 20 requests/min total, block at 100 requests/min total.",
+        "description": "Rate limits: warn at 2 requests/min total, block at 5 requests/min total.",
         "operationId": "login-get",
         "tags": [
           "Login"
@@ -72,7 +72,7 @@
       },
       "post": {
         "summary": "Login",
-        "description": "Rate limits: warn at 20 requests/min total, block at 100 requests/min total.",
+        "description": "Rate limits: warn at 2 requests/min total, block at 5 requests/min total.",
         "operationId": "login-post",
         "tags": [
           "Login"
@@ -104,7 +104,7 @@
       },
       "put": {
         "summary": "Login",
-        "description": "Rate limits: warn at 20 requests/min total, block at 100 requests/min total.",
+        "description": "Rate limits: warn at 2 requests/min total, block at 5 requests/min total.",
         "operationId": "login-put",
         "tags": [
           "Login"
@@ -136,7 +136,7 @@
       },
       "patch": {
         "summary": "Login",
-        "description": "Rate limits: warn at 20 requests/min total, block at 100 requests/min total.",
+        "description": "Rate limits: warn at 2 requests/min total, block at 5 requests/min total.",
         "operationId": "login-patch",
         "tags": [
           "Login"
@@ -168,7 +168,7 @@
       },
       "delete": {
         "summary": "Login",
-        "description": "Rate limits: warn at 20 requests/min total, block at 100 requests/min total.",
+        "description": "Rate limits: warn at 2 requests/min total, block at 5 requests/min total.",
         "operationId": "login-delete",
         "tags": [
           "Login"
@@ -200,7 +200,7 @@
       },
       "head": {
         "summary": "Login",
-        "description": "Rate limits: warn at 20 requests/min total, block at 100 requests/min total.",
+        "description": "Rate limits: warn at 2 requests/min total, block at 5 requests/min total.",
         "operationId": "login-head",
         "tags": [
           "Login"
@@ -232,7 +232,7 @@
       },
       "options": {
         "summary": "Login",
-        "description": "Rate limits: warn at 20 requests/min total, block at 100 requests/min total.",
+        "description": "Rate limits: warn at 2 requests/min total, block at 5 requests/min total.",
         "operationId": "login-options",
         "tags": [
           "Login"

@@ -10,7 +10,7 @@ const MIN = { minutes: 1, factor: 1, unit: "min" };
 
 // Order matters: routes match top to bottom, so the catch-all goes last.
 const tiers = [
-  { id: "login", label: "Login", path: "/login", warn: 20, block: 100, window: MIN },
+  { id: "login", label: "Login", path: "/login", warn: 2, block: 5, window: MIN }, // TEMP: lowered for testing (spec: warn 20, block 100),
   { id: "auth", label: "Authentication APIs", path: "/api/auth/(.*)", warn: 30, block: 150, window: MIN },
   { id: "oauth-token", label: "OAuth token", path: "/oauth/token", warn: 10, block: 50, window: MIN },
   { id: "restapi", label: "Public REST APIs", path: "/api/restapi/(.*)", warn: 60, block: 100, window: SEC, perUser: true, jwt: "optional" },

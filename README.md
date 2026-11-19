@@ -7,7 +7,7 @@ each API category, then forwards the request to the origin unchanged.
 
 | API category          | Path             | Warning          | Blocking           | Counted   |
 | --------------------- | ---------------- | ---------------- | ------------------ | --------- |
-| Login                 | `/login`         | 20 / min         | 100 / min          | all users |
+| Login (test values; spec is 20 / 100) | `/login` | 2 / min | 5 / min | all users |
 | Authentication APIs   | `/api/auth/*`    | 30 / min         | 150 / min          | all users |
 | OAuth token           | `/oauth/token`   | 10 / min         | 50 / min           | all users |
 | Public REST APIs      | `/api/restapi/*` | 60 / sec         | 100 / sec          | per user  |
