@@ -13,9 +13,9 @@ const REST = ["get", "post", "put", "patch", "delete"];
 
 // Order matters: routes match top to bottom, so the catch-all goes last.
 const tiers = [
-  { id: "login", label: "Login", path: "/login", methods: ["post"], warn: 2, block: 5, window: MIN }, // TEMP: lowered for testing (spec: warn 20, block 100),
-  { id: "auth", label: "Authentication APIs", path: "/api/auth/(.*)", methods: REST, warn: 30, block: 150, window: MIN },
-  { id: "oauth-token", label: "OAuth token", path: "/oauth/token", methods: ["post"], warn: 10, block: 50, window: MIN },
+  { id: "login", label: "Login", path: "/login", methods: ["post"], warn: 2, block: 5, window: MIN, perUser: true, jwt: "required" }, // TEMP: lowered for testing (spec: warn 20, block 100),
+  { id: "auth", label: "Authentication APIs", path: "/api/auth/(.*)", methods: REST, warn: 30, block: 150, window: MIN, perUser: true, jwt: "required" },
+  { id: "oauth-token", label: "OAuth token", path: "/oauth/token", methods: ["post"], warn: 10, block: 50, window: MIN, perUser: true, jwt: "required" },
   { id: "restapi", label: "Public REST APIs", path: "/api/restapi/(.*)", methods: REST, warn: 60, block: 100, window: SEC, perUser: true, jwt: "required" },
   { id: "graphql", label: "GraphQL APIs", path: "/api/graphql", methods: ["get", "post"], warn: 60, block: 100, window: SEC, perUser: true, jwt: "required" },
   { id: "data-rest", label: "Data MS REST APIs", path: "/data/rest/(.*)", methods: REST, warn: 60, block: 100, window: SEC, perUser: true, jwt: "required" },
@@ -26,7 +26,7 @@ const tiers = [
       { id: "mcp-total", warn: 500, block: 1000, window: MIN },
     ],
   },
-  { id: "default", label: "Default / other paths", path: "/(.*)", methods: ALL, warn: 100, block: 500, window: MIN },
+  { id: "default", label: "Default / other paths", path: "/(.*)", methods: ALL, warn: 100, block: 500, window: MIN, perUser: true, jwt: "required" },
 ];
 
 // Placeholders until the real values are known. Tokens are minted by

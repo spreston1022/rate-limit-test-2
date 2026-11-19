@@ -7,15 +7,15 @@ each API category, then forwards the request to the origin unchanged.
 
 | API category          | Path             | Warning          | Blocking           | Counted   |
 | --------------------- | ---------------- | ---------------- | ------------------ | --------- |
-| Login (test values; spec is 20 / 100) | `/login` | 2 / min | 5 / min | all users |
-| Authentication APIs   | `/api/auth/*`    | 30 / min         | 150 / min          | all users |
-| OAuth token           | `/oauth/token`   | 10 / min         | 50 / min           | all users |
+| Login (test values; spec is 20 / 100) | `/login` | 2 / min | 5 / min | per user  |
+| Authentication APIs   | `/api/auth/*`    | 30 / min         | 150 / min          | per user  |
+| OAuth token           | `/oauth/token`   | 10 / min         | 50 / min           | per user  |
 | Public REST APIs      | `/api/restapi/*` | 60 / sec         | 100 / sec          | per user  |
 | GraphQL APIs          | `/api/graphql`   | 60 / sec         | 100 / sec          | per user  |
 | Data MS REST APIs     | `/data/rest/*`   | 60 / sec         | 100 / sec          | per user  |
 | MCP (test values; spec is 100 / 500) | `/mcp` | 3 / min | 5 / min | per user |
 | MCP                   | `/mcp`           | 500 / min        | 1,000 / min        | all users |
-| Default / other paths | `/*`             | 100 / min        | 500 / min          | all users |
+| Default / other paths | `/*`             | 100 / min        | 500 / min          | per user  |
 
 - **Blocking** returns `429 Too Many Requests` with a `Retry-After` header.
 - **Warning** never blocks. The request goes through, a warning is written to
@@ -34,9 +34,9 @@ each API category, then forwards the request to the origin unchanged.
   `/mcp`, the five REST methods for the wildcard API routes, and everything
   for the catch-all. Any other method on those paths falls through to the
   catch-all and is handled under the default limits.
-- `/mcp` and the three per-user API routes require a valid bearer token.
-  Requests without one get 401 at the gateway, so every per-user limit is
-  counted against a verified `user_id`.
+- Every route requires a valid bearer token. Requests without one get 401
+  at the gateway, so every per-user limit is counted against a verified
+  `user_id`.
 
 Per-user limits are counted against the `user_id` claim of the validated
 bearer token.
@@ -44,13 +44,15 @@ bearer token.
 ## Assumptions and open questions
 
 1. **Warning behaviour** is assumed to be a log entry plus a response header.
-2. **The first four rows** are assumed to be aggregate limits across all
-   callers, not per user or per IP.
+2. **Every limit is per user** (`user_id` claim) except the `/mcp`
+   "all users combined" row. This means `/login`, `/api/auth/*` and
+   `/oauth/token` also require a token, which needs confirming since
+   callers of those endpoints may not have one yet.
 3. **Per-second limits** are enforced over a 6 second window (100/sec is
    600 per 6 seconds). Zuplo recommends windows of 5 seconds or longer for
    consistent enforcement across edge locations; a true 1 second window is
    `timeWindowMinutes: 0.0167` if stricter burst control is wanted.
-4. **Basic auth is rejected** on the per-user routes, since a request
+4. **Basic auth is rejected** on every route, since a request
    without a validated token has no trustworthy user identity. The API is
    documented as also accepting Basic auth, so this needs confirming.
 5. **Origin and IdP** are placeholders until the real values are known.
@@ -68,11 +70,11 @@ service and the issuer is the stand-in IdP. Change them there and run
 npm install
 npm run dev
 
-# Aggregate limit: warnings start after 10 requests, 429 after 50
-for i in $(seq 1 55); do curl -s -o /dev/null -w '%{http_code}\n' -X POST localhost:9000/oauth/token; done
-
-# Per-user limit with a test token
 TOKEN=$(npm run -s token -- --user alice)
+
+# Warnings start after 10 requests per user, 429 after 50
+for i in $(seq 1 55); do curl -s -o /dev/null -w '%{http_code}\n' -X POST localhost:9000/oauth/token -H "authorization: Bearer $TOKEN"; done
+
 curl -i -X POST localhost:9000/mcp -H "authorization: Bearer $TOKEN"
 ```
 

@@ -20,9 +20,13 @@
         "module": "$import(@zuplo/runtime)",
         "export": "RateLimitInboundPolicy",
         "options": {
-          "rateLimitBy": "all",
+          "rateLimitBy": "function",
           "requestsAllowed": 2,
           "timeWindowMinutes": 1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
           "headerMode": "none"
         }
       }
@@ -35,7 +39,7 @@
         "export": "warn",
         "options": {
           "policy": "login-warn-counter",
-          "threshold": "2 requests/min total"
+          "threshold": "2 requests/min/user"
         }
       }
     },
@@ -46,9 +50,13 @@
         "module": "$import(@zuplo/runtime)",
         "export": "RateLimitInboundPolicy",
         "options": {
-          "rateLimitBy": "all",
+          "rateLimitBy": "function",
           "requestsAllowed": 5,
           "timeWindowMinutes": 1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
           "headerMode": "retry-after"
         }
       }
@@ -60,9 +68,13 @@
         "module": "$import(@zuplo/runtime)",
         "export": "RateLimitInboundPolicy",
         "options": {
-          "rateLimitBy": "all",
+          "rateLimitBy": "function",
           "requestsAllowed": 30,
           "timeWindowMinutes": 1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
           "headerMode": "none"
         }
       }
@@ -75,7 +87,7 @@
         "export": "warn",
         "options": {
           "policy": "auth-warn-counter",
-          "threshold": "30 requests/min total"
+          "threshold": "30 requests/min/user"
         }
       }
     },
@@ -86,9 +98,13 @@
         "module": "$import(@zuplo/runtime)",
         "export": "RateLimitInboundPolicy",
         "options": {
-          "rateLimitBy": "all",
+          "rateLimitBy": "function",
           "requestsAllowed": 150,
           "timeWindowMinutes": 1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
           "headerMode": "retry-after"
         }
       }
@@ -100,9 +116,13 @@
         "module": "$import(@zuplo/runtime)",
         "export": "RateLimitInboundPolicy",
         "options": {
-          "rateLimitBy": "all",
+          "rateLimitBy": "function",
           "requestsAllowed": 10,
           "timeWindowMinutes": 1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
           "headerMode": "none"
         }
       }
@@ -115,7 +135,7 @@
         "export": "warn",
         "options": {
           "policy": "oauth-token-warn-counter",
-          "threshold": "10 requests/min total"
+          "threshold": "10 requests/min/user"
         }
       }
     },
@@ -126,9 +146,13 @@
         "module": "$import(@zuplo/runtime)",
         "export": "RateLimitInboundPolicy",
         "options": {
-          "rateLimitBy": "all",
+          "rateLimitBy": "function",
           "requestsAllowed": 50,
           "timeWindowMinutes": 1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
           "headerMode": "retry-after"
         }
       }
@@ -372,9 +396,13 @@
         "module": "$import(@zuplo/runtime)",
         "export": "RateLimitInboundPolicy",
         "options": {
-          "rateLimitBy": "all",
+          "rateLimitBy": "function",
           "requestsAllowed": 100,
           "timeWindowMinutes": 1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
           "headerMode": "none"
         }
       }
@@ -387,7 +415,7 @@
         "export": "warn",
         "options": {
           "policy": "default-warn-counter",
-          "threshold": "100 requests/min total"
+          "threshold": "100 requests/min/user"
         }
       }
     },
@@ -398,9 +426,13 @@
         "module": "$import(@zuplo/runtime)",
         "export": "RateLimitInboundPolicy",
         "options": {
-          "rateLimitBy": "all",
+          "rateLimitBy": "function",
           "requestsAllowed": 500,
           "timeWindowMinutes": 1,
+          "identifier": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "userKey"
+          },
           "headerMode": "retry-after"
         }
       }

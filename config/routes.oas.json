@@ -40,7 +40,7 @@
       },
       "post": {
         "summary": "Login",
-        "description": "Rate limits: warn at 2 requests/min total, block at 5 requests/min total.",
+        "description": "Rate limits: warn at 2 requests/min/user, block at 5 requests/min/user.",
         "operationId": "login-post",
         "tags": [
           "Login"
@@ -64,6 +64,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "login-warn",
               "login-block"
             ]
@@ -77,7 +78,7 @@
       },
       "get": {
         "summary": "Authentication APIs",
-        "description": "Rate limits: warn at 30 requests/min total, block at 150 requests/min total.",
+        "description": "Rate limits: warn at 30 requests/min/user, block at 150 requests/min/user.",
         "operationId": "auth-get",
         "tags": [
           "Authentication APIs"
@@ -101,6 +102,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "auth-warn",
               "auth-block"
             ]
@@ -109,7 +111,7 @@
       },
       "post": {
         "summary": "Authentication APIs",
-        "description": "Rate limits: warn at 30 requests/min total, block at 150 requests/min total.",
+        "description": "Rate limits: warn at 30 requests/min/user, block at 150 requests/min/user.",
         "operationId": "auth-post",
         "tags": [
           "Authentication APIs"
@@ -133,6 +135,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "auth-warn",
               "auth-block"
             ]
@@ -141,7 +144,7 @@
       },
       "put": {
         "summary": "Authentication APIs",
-        "description": "Rate limits: warn at 30 requests/min total, block at 150 requests/min total.",
+        "description": "Rate limits: warn at 30 requests/min/user, block at 150 requests/min/user.",
         "operationId": "auth-put",
         "tags": [
           "Authentication APIs"
@@ -165,6 +168,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "auth-warn",
               "auth-block"
             ]
@@ -173,7 +177,7 @@
       },
       "patch": {
         "summary": "Authentication APIs",
-        "description": "Rate limits: warn at 30 requests/min total, block at 150 requests/min total.",
+        "description": "Rate limits: warn at 30 requests/min/user, block at 150 requests/min/user.",
         "operationId": "auth-patch",
         "tags": [
           "Authentication APIs"
@@ -197,6 +201,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "auth-warn",
               "auth-block"
             ]
@@ -205,7 +210,7 @@
       },
       "delete": {
         "summary": "Authentication APIs",
-        "description": "Rate limits: warn at 30 requests/min total, block at 150 requests/min total.",
+        "description": "Rate limits: warn at 30 requests/min/user, block at 150 requests/min/user.",
         "operationId": "auth-delete",
         "tags": [
           "Authentication APIs"
@@ -229,6 +234,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "auth-warn",
               "auth-block"
             ]
@@ -242,7 +248,7 @@
       },
       "post": {
         "summary": "OAuth token",
-        "description": "Rate limits: warn at 10 requests/min total, block at 50 requests/min total.",
+        "description": "Rate limits: warn at 10 requests/min/user, block at 50 requests/min/user.",
         "operationId": "oauth-token-post",
         "tags": [
           "OAuth token"
@@ -266,6 +272,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "oauth-token-warn",
               "oauth-token-block"
             ]
@@ -800,7 +807,7 @@
       },
       "get": {
         "summary": "Default / other paths",
-        "description": "Rate limits: warn at 100 requests/min total, block at 500 requests/min total.",
+        "description": "Rate limits: warn at 100 requests/min/user, block at 500 requests/min/user.",
         "operationId": "default-get",
         "tags": [
           "Default / other paths"
@@ -824,6 +831,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "default-warn",
               "default-block"
             ]
@@ -832,7 +840,7 @@
       },
       "post": {
         "summary": "Default / other paths",
-        "description": "Rate limits: warn at 100 requests/min total, block at 500 requests/min total.",
+        "description": "Rate limits: warn at 100 requests/min/user, block at 500 requests/min/user.",
         "operationId": "default-post",
         "tags": [
           "Default / other paths"
@@ -856,6 +864,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "default-warn",
               "default-block"
             ]
@@ -864,7 +873,7 @@
       },
       "put": {
         "summary": "Default / other paths",
-        "description": "Rate limits: warn at 100 requests/min total, block at 500 requests/min total.",
+        "description": "Rate limits: warn at 100 requests/min/user, block at 500 requests/min/user.",
         "operationId": "default-put",
         "tags": [
           "Default / other paths"
@@ -888,6 +897,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "default-warn",
               "default-block"
             ]
@@ -896,7 +906,7 @@
       },
       "patch": {
         "summary": "Default / other paths",
-        "description": "Rate limits: warn at 100 requests/min total, block at 500 requests/min total.",
+        "description": "Rate limits: warn at 100 requests/min/user, block at 500 requests/min/user.",
         "operationId": "default-patch",
         "tags": [
           "Default / other paths"
@@ -920,6 +930,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "default-warn",
               "default-block"
             ]
@@ -928,7 +939,7 @@
       },
       "delete": {
         "summary": "Default / other paths",
-        "description": "Rate limits: warn at 100 requests/min total, block at 500 requests/min total.",
+        "description": "Rate limits: warn at 100 requests/min/user, block at 500 requests/min/user.",
         "operationId": "default-delete",
         "tags": [
           "Default / other paths"
@@ -952,6 +963,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "default-warn",
               "default-block"
             ]
@@ -960,7 +972,7 @@
       },
       "head": {
         "summary": "Default / other paths",
-        "description": "Rate limits: warn at 100 requests/min total, block at 500 requests/min total.",
+        "description": "Rate limits: warn at 100 requests/min/user, block at 500 requests/min/user.",
         "operationId": "default-head",
         "tags": [
           "Default / other paths"
@@ -984,6 +996,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "default-warn",
               "default-block"
             ]
@@ -992,7 +1005,7 @@
       },
       "options": {
         "summary": "Default / other paths",
-        "description": "Rate limits: warn at 100 requests/min total, block at 500 requests/min total.",
+        "description": "Rate limits: warn at 100 requests/min/user, block at 500 requests/min/user.",
         "operationId": "default-options",
         "tags": [
           "Default / other paths"
@@ -1016,6 +1029,7 @@
           },
           "policies": {
             "inbound": [
+              "jwt-required",
               "default-warn",
               "default-block"
             ]
