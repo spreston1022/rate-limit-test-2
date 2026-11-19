@@ -22,7 +22,7 @@ const tiers = [
   {
     id: "mcp", label: "MCP", path: "/mcp", methods: ["get", "post", "delete"], jwt: "required",
     limits: [
-      { id: "mcp-user", warn: 100, block: 500, window: MIN, perUser: true },
+      { id: "mcp-user", warn: 3, block: 5, window: MIN, perUser: true }, // TEMP: lowered for testing (spec: warn 100, block 500)
       { id: "mcp-total", warn: 500, block: 1000, window: MIN },
     ],
   },

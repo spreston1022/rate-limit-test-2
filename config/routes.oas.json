@@ -690,7 +690,7 @@
       },
       "get": {
         "summary": "MCP",
-        "description": "Rate limits: warn at 100 requests/min/user, block at 500 requests/min/user; warn at 500 requests/min total, block at 1000 requests/min total.",
+        "description": "Rate limits: warn at 3 requests/min/user, block at 5 requests/min/user; warn at 500 requests/min total, block at 1000 requests/min total.",
         "operationId": "mcp-get",
         "tags": [
           "MCP"
@@ -725,7 +725,7 @@
       },
       "post": {
         "summary": "MCP",
-        "description": "Rate limits: warn at 100 requests/min/user, block at 500 requests/min/user; warn at 500 requests/min total, block at 1000 requests/min total.",
+        "description": "Rate limits: warn at 3 requests/min/user, block at 5 requests/min/user; warn at 500 requests/min total, block at 1000 requests/min total.",
         "operationId": "mcp-post",
         "tags": [
           "MCP"
@@ -760,7 +760,7 @@
       },
       "delete": {
         "summary": "MCP",
-        "description": "Rate limits: warn at 100 requests/min/user, block at 500 requests/min/user; warn at 500 requests/min total, block at 1000 requests/min total.",
+        "description": "Rate limits: warn at 3 requests/min/user, block at 5 requests/min/user; warn at 500 requests/min total, block at 1000 requests/min total.",
         "operationId": "mcp-delete",
         "tags": [
           "MCP"

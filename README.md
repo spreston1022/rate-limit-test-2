@@ -13,7 +13,7 @@ each API category, then forwards the request to the origin unchanged.
 | Public REST APIs      | `/api/restapi/*` | 60 / sec         | 100 / sec          | per user  |
 | GraphQL APIs          | `/api/graphql`   | 60 / sec         | 100 / sec          | per user  |
 | Data MS REST APIs     | `/data/rest/*`   | 60 / sec         | 100 / sec          | per user  |
-| MCP                   | `/mcp`           | 100 / min        | 500 / min          | per user  |
+| MCP (test values; spec is 100 / 500) | `/mcp` | 3 / min | 5 / min | per user |
 | MCP                   | `/mcp`           | 500 / min        | 1,000 / min        | all users |
 | Default / other paths | `/*`             | 100 / min        | 500 / min          | all users |
 

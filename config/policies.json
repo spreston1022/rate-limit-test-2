@@ -298,7 +298,7 @@
         "export": "RateLimitInboundPolicy",
         "options": {
           "rateLimitBy": "function",
-          "requestsAllowed": 100,
+          "requestsAllowed": 3,
           "timeWindowMinutes": 1,
           "identifier": {
             "module": "$import(./modules/rate-limits)",
@@ -316,7 +316,7 @@
         "export": "warn",
         "options": {
           "policy": "mcp-user-warn-counter",
-          "threshold": "100 requests/min/user"
+          "threshold": "3 requests/min/user"
         }
       }
     },
@@ -328,7 +328,7 @@
         "export": "RateLimitInboundPolicy",
         "options": {
           "rateLimitBy": "function",
-          "requestsAllowed": 500,
+          "requestsAllowed": 5,
           "timeWindowMinutes": 1,
           "identifier": {
             "module": "$import(./modules/rate-limits)",
