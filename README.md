@@ -56,11 +56,12 @@ counted against its client IP instead.
 | Variable         | Purpose                                     |
 | ---------------- | ------------------------------------------- |
 | `ORIGIN_URL`     | Backend that every route forwards to. Defaults to `https://echo.zuplo.io` when unset |
-| `JWT_ISSUER`     | Expected `iss` of bearer tokens             |
-| `JWKS_URL`       | JWKS used to verify bearer tokens           |
 
-Set these in the Zuplo Portal under Settings > Environment Variables for
+Set it in the Zuplo Portal under Settings > Environment Variables for
 deployed environments, and in `.env` locally (`cp .env.example .env`).
+
+The token issuer and JWKS URL are constants at the top of
+`scripts/generate-config.mjs`. They currently point at the stand-in IdP.
 
 ## Testing
 
@@ -78,7 +79,7 @@ curl -i -X POST localhost:9000/mcp -H "authorization: Bearer $TOKEN"
 
 `npm run token` signs tokens with a local test key and the gateway serves the
 matching public key at `/.well-known/jwks.json`. This stands in for the real
-IdP: once `JWKS_URL` and `JWT_ISSUER` point at it, delete that route,
+IdP: once `JWKS_URL` and `JWT_ISSUER` in the generator point at it, delete that route,
 `modules/test-idp.ts`, `modules/test-jwks.ts` and `tests/token.mjs`. The
 private key lives in `tests/.keys` and is not committed, so tokens can only be
 minted on the machine that generated it.

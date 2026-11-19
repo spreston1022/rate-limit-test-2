@@ -33,7 +33,7 @@ const { values } = parseArgs({
   options: {
     user: { type: "string", default: "test-user" },
     hours: { type: "string", default: "1" },
-    issuer: { type: "string", default: process.env.JWT_ISSUER ?? "https://test-idp.rate-limit-test.local" },
+    issuer: { type: "string", default: "https://test-idp.rate-limit-test.local" },
   },
 });
 

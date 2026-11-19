@@ -7,8 +7,8 @@
         "module": "$import(@zuplo/runtime)",
         "export": "OpenIdJwtInboundPolicy",
         "options": {
-          "issuer": "$env(JWT_ISSUER)",
-          "jwkUrl": "$env(JWKS_URL)",
+          "issuer": "https://test-idp.rate-limit-test.local",
+          "jwkUrl": "https://rate-limit-test-2-main-d5e669e.oracle-poc.zuplo.work/.well-known/jwks.json",
           "allowUnauthenticatedRequests": false
         }
       }
@@ -20,8 +20,8 @@
         "module": "$import(@zuplo/runtime)",
         "export": "OpenIdJwtInboundPolicy",
         "options": {
-          "issuer": "$env(JWT_ISSUER)",
-          "jwkUrl": "$env(JWKS_URL)",
+          "issuer": "https://test-idp.rate-limit-test.local",
+          "jwkUrl": "https://rate-limit-test-2-main-d5e669e.oracle-poc.zuplo.work/.well-known/jwks.json",
           "allowUnauthenticatedRequests": true
         }
       }

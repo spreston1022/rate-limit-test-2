@@ -26,6 +26,13 @@ const tiers = [
   { id: "default", label: "Default / other paths", path: "/(.*)", warn: 100, block: 500, window: MIN },
 ];
 
+// Bearer tokens are validated against the stand-in IdP: tokens minted by
+// `npm run token`, verified with the public key this gateway serves. Replace
+// both values with the real IdP's issuer and JWKS URL when they are known.
+const JWT_ISSUER = "https://test-idp.rate-limit-test.local";
+const JWKS_URL =
+  "https://rate-limit-test-2-main-d5e669e.oracle-poc.zuplo.work/.well-known/jwks.json";
+
 const METHODS = ["get", "post", "put", "patch", "delete", "head", "options"];
 const identifier = { module: "$import(./modules/rate-limits)", export: "userKey" };
 
@@ -36,8 +43,8 @@ const jwtPolicy = (name, allowUnauthenticatedRequests) => ({
     module: "$import(@zuplo/runtime)",
     export: "OpenIdJwtInboundPolicy",
     options: {
-      issuer: "$env(JWT_ISSUER)",
-      jwkUrl: "$env(JWKS_URL)",
+      issuer: JWT_ISSUER,
+      jwkUrl: JWKS_URL,
       allowUnauthenticatedRequests,
     },
   },
