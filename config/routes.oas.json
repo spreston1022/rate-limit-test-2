@@ -57,10 +57,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/post",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -95,10 +94,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/get",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -128,10 +126,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/post",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -161,10 +158,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/put",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -194,10 +190,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/patch",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -227,10 +222,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/delete",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -265,10 +259,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/post",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -303,10 +296,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/get",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -337,10 +329,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/post",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -371,10 +362,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/put",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -405,10 +395,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/patch",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -439,10 +428,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/delete",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -478,10 +466,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/get",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -512,10 +499,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/post",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -551,10 +537,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/get",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -585,10 +570,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/post",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -619,10 +603,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/put",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -653,10 +636,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/patch",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -687,10 +669,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/delete",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -726,10 +707,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/get",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -762,10 +742,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/post",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -798,10 +777,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/delete",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -839,10 +817,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/get",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -872,10 +849,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/post",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -905,10 +881,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/put",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -938,10 +913,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/patch",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -971,10 +945,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/delete",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -1004,10 +977,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/get",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -1037,10 +1009,9 @@
           "corsPolicy": "none",
           "handler": {
             "module": "$import(@zuplo/runtime)",
-            "export": "urlRewriteHandler",
+            "export": "urlForwardHandler",
             "options": {
-              "rewritePattern": "https://postman-echo.com/get",
-              "forwardSearch": true
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
