@@ -34,13 +34,12 @@ each API category, then forwards the request to the origin unchanged.
   `/mcp`, the five REST methods for the wildcard API routes, and everything
   for the catch-all. Any other method on those paths falls through to the
   catch-all and is handled under the default limits.
-- `/mcp` requires a valid bearer token. The per-user API routes accept a
-  bearer token or Basic auth, so the token is validated when present and
-  Basic credentials pass through to the origin.
+- `/mcp` and the three per-user API routes require a valid bearer token.
+  Requests without one get 401 at the gateway, so every per-user limit is
+  counted against a verified `user_id`.
 
 Per-user limits are counted against the `user_id` claim of the validated
-bearer token. A request without that claim (no token, or Basic auth) is
-counted against its client IP instead.
+bearer token.
 
 ## Assumptions and open questions
 
@@ -51,9 +50,9 @@ counted against its client IP instead.
    600 per 6 seconds). Zuplo recommends windows of 5 seconds or longer for
    consistent enforcement across edge locations; a true 1 second window is
    `timeWindowMinutes: 0.0167` if stricter burst control is wanted.
-4. **Basic auth requests** carry no `user_id` claim, so on the per-user
-   routes they are limited by client IP. Whether those routes should require
-   a bearer token instead is open.
+4. **Basic auth is rejected** on the per-user routes, since a request
+   without a validated token has no trustworthy user identity. The API is
+   documented as also accepting Basic auth, so this needs confirming.
 5. **Origin and IdP** are placeholders until the real values are known.
 
 ## Configuration

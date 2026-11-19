@@ -16,9 +16,9 @@ const tiers = [
   { id: "login", label: "Login", path: "/login", methods: ["post"], warn: 2, block: 5, window: MIN }, // TEMP: lowered for testing (spec: warn 20, block 100),
   { id: "auth", label: "Authentication APIs", path: "/api/auth/(.*)", methods: REST, warn: 30, block: 150, window: MIN },
   { id: "oauth-token", label: "OAuth token", path: "/oauth/token", methods: ["post"], warn: 10, block: 50, window: MIN },
-  { id: "restapi", label: "Public REST APIs", path: "/api/restapi/(.*)", methods: REST, warn: 60, block: 100, window: SEC, perUser: true, jwt: "optional" },
-  { id: "graphql", label: "GraphQL APIs", path: "/api/graphql", methods: ["get", "post"], warn: 60, block: 100, window: SEC, perUser: true, jwt: "optional" },
-  { id: "data-rest", label: "Data MS REST APIs", path: "/data/rest/(.*)", methods: REST, warn: 60, block: 100, window: SEC, perUser: true, jwt: "optional" },
+  { id: "restapi", label: "Public REST APIs", path: "/api/restapi/(.*)", methods: REST, warn: 60, block: 100, window: SEC, perUser: true, jwt: "required" },
+  { id: "graphql", label: "GraphQL APIs", path: "/api/graphql", methods: ["get", "post"], warn: 60, block: 100, window: SEC, perUser: true, jwt: "required" },
+  { id: "data-rest", label: "Data MS REST APIs", path: "/data/rest/(.*)", methods: REST, warn: 60, block: 100, window: SEC, perUser: true, jwt: "required" },
   {
     id: "mcp", label: "MCP", path: "/mcp", methods: ["get", "post", "delete"], jwt: "required",
     limits: [
@@ -71,7 +71,7 @@ const rateLimit = (name, limit, requests, headerMode) => ({
 const describe = (limit, requests) =>
   `${requests} requests/${limit.window.unit}${limit.perUser ? "/user" : " total"}`;
 
-const policies = [jwtPolicy("jwt-required", false), jwtPolicy("jwt-optional", true)];
+const policies = [jwtPolicy("jwt-required", false)];
 const paths = {};
 
 for (const tier of tiers) {

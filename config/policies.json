@@ -14,19 +14,6 @@
       }
     },
     {
-      "name": "jwt-optional",
-      "policyType": "open-id-jwt-auth-inbound",
-      "handler": {
-        "module": "$import(@zuplo/runtime)",
-        "export": "OpenIdJwtInboundPolicy",
-        "options": {
-          "issuer": "https://test-idp.rate-limit-test.local",
-          "jwkUrl": "https://rate-limit-test-2-main-d5e669e.oracle-poc.zuplo.work/.well-known/jwks.json",
-          "allowUnauthenticatedRequests": true
-        }
-      }
-    },
-    {
       "name": "login-warn-counter",
       "policyType": "rate-limit-inbound",
       "handler": {

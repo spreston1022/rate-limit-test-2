@@ -303,7 +303,7 @@
           },
           "policies": {
             "inbound": [
-              "jwt-optional",
+              "jwt-required",
               "restapi-warn",
               "restapi-block"
             ]
@@ -336,7 +336,7 @@
           },
           "policies": {
             "inbound": [
-              "jwt-optional",
+              "jwt-required",
               "restapi-warn",
               "restapi-block"
             ]
@@ -369,7 +369,7 @@
           },
           "policies": {
             "inbound": [
-              "jwt-optional",
+              "jwt-required",
               "restapi-warn",
               "restapi-block"
             ]
@@ -402,7 +402,7 @@
           },
           "policies": {
             "inbound": [
-              "jwt-optional",
+              "jwt-required",
               "restapi-warn",
               "restapi-block"
             ]
@@ -435,7 +435,7 @@
           },
           "policies": {
             "inbound": [
-              "jwt-optional",
+              "jwt-required",
               "restapi-warn",
               "restapi-block"
             ]
@@ -473,7 +473,7 @@
           },
           "policies": {
             "inbound": [
-              "jwt-optional",
+              "jwt-required",
               "graphql-warn",
               "graphql-block"
             ]
@@ -506,7 +506,7 @@
           },
           "policies": {
             "inbound": [
-              "jwt-optional",
+              "jwt-required",
               "graphql-warn",
               "graphql-block"
             ]
@@ -544,7 +544,7 @@
           },
           "policies": {
             "inbound": [
-              "jwt-optional",
+              "jwt-required",
               "data-rest-warn",
               "data-rest-block"
             ]
@@ -577,7 +577,7 @@
           },
           "policies": {
             "inbound": [
-              "jwt-optional",
+              "jwt-required",
               "data-rest-warn",
               "data-rest-block"
             ]
@@ -610,7 +610,7 @@
           },
           "policies": {
             "inbound": [
-              "jwt-optional",
+              "jwt-required",
               "data-rest-warn",
               "data-rest-block"
             ]
@@ -643,7 +643,7 @@
           },
           "policies": {
             "inbound": [
-              "jwt-optional",
+              "jwt-required",
               "data-rest-warn",
               "data-rest-block"
             ]
@@ -676,7 +676,7 @@
           },
           "policies": {
             "inbound": [
-              "jwt-optional",
+              "jwt-required",
               "data-rest-warn",
               "data-rest-block"
             ]

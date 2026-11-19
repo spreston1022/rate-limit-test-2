@@ -10,9 +10,8 @@ const USER_CLAIM = "user_id";
  * Bucket key for the per-user limits: the `user_id` claim of the validated
  * bearer token.
  *
- * Requests with no token (for example Basic auth, which the gateway passes
- * through to the origin) or a token without the claim have no user identity,
- * so they are limited by client IP rather than left unlimited.
+ * Every per-user route requires a valid token, so the IP fallback below only
+ * applies to a valid token that is missing the claim.
  */
 export function userKey(
   request: ZuploRequest,
