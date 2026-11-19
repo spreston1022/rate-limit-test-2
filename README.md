@@ -32,8 +32,8 @@ each API category, then forwards the request to the origin unchanged.
 - Each route lists only the methods it needs: POST for `/login` and
   `/oauth/token`, GET and POST for `/api/graphql`, GET, POST and DELETE for
   `/mcp`, the five REST methods for the wildcard API routes, and everything
-  for the catch-all. Any other method on those paths returns 404; the
-  catch-all excludes them so it cannot be used to bypass a route's policies.
+  for the catch-all. Any other method on those paths returns 405, so it
+  cannot fall through to the catch-all and bypass the route's policies.
 - `/mcp` requires a valid bearer token. The per-user API routes accept a
   bearer token or Basic auth, so the token is validated when present and
   Basic credentials pass through to the origin.
@@ -58,15 +58,10 @@ counted against its client IP instead.
 
 ## Configuration
 
-| Variable         | Purpose                                     |
-| ---------------- | ------------------------------------------- |
-| `ORIGIN_URL`     | Backend that every route forwards to. Defaults to `https://echo.zuplo.io` when unset |
-
-Set it in the Zuplo Portal under Settings > Environment Variables for
-deployed environments, and in `.env` locally (`cp .env.example .env`).
-
-The token issuer and JWKS URL are constants at the top of
-`scripts/generate-config.mjs`. They currently point at the stand-in IdP.
+The origin, token issuer and JWKS URL are constants at the top of
+`scripts/generate-config.mjs`. They are placeholders: the origin is an echo
+service and the issuer is the stand-in IdP. Change them there and run
+`npm run generate`.
 
 ## Testing
 

@@ -26,22 +26,12 @@ const tiers = [
       { id: "mcp-total", warn: 500, block: 1000, window: MIN },
     ],
   },
+  { id: "default", label: "Default / other paths", path: "/(.*)", methods: ALL, warn: 100, block: 500, window: MIN },
 ];
 
-// The catch-all excludes every path above. Otherwise a method that a route
-// does not list (say PATCH /mcp) would fall through to it and reach the
-// origin under the default limits, skipping that route's policies.
-const reserved = [...tiers.map((t) => t.path), "/.well-known/jwks.json"].map((p) =>
-  p.endsWith("/(.*)") ? p.slice(1, -4) : `${p.slice(1).replaceAll(".", "\\.")}$`,
-);
-tiers.push({
-  id: "default", label: "Default / other paths", path: `/((?!${reserved.join("|")}).*)`,
-  methods: ALL, warn: 100, block: 500, window: MIN,
-});
-
-// Bearer tokens are validated against the stand-in IdP: tokens minted by
-// `npm run token`, verified with the public key this gateway serves. Replace
-// both values with the real IdP's issuer and JWKS URL when they are known.
+// Placeholders until the real values are known. Tokens are minted by
+// `npm run token` and verified with the public key this gateway serves.
+const ORIGIN_URL = "https://echo.zuplo.io";
 const JWT_ISSUER = "https://test-idp.rate-limit-test.local";
 const JWKS_URL =
   "https://rate-limit-test-2-main-d5e669e.oracle-poc.zuplo.work/.well-known/jwks.json";
@@ -129,11 +119,29 @@ for (const tier of tiers) {
         handler: {
           module: "$import(@zuplo/runtime)",
           export: "urlForwardHandler",
-          // Falls back to an echo service so the gateway is testable before the
-          // real origin is known. Set ORIGIN_URL to override.
-          options: { baseUrl: "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}" },
+          options: { baseUrl: ORIGIN_URL },
         },
         policies: { inbound },
+      },
+    };
+  }
+  // Methods a route does not list are answered with 405 here. Without this
+  // they would fall through to the catch-all and reach the origin under the
+  // default limits, skipping this route's policies.
+  for (const method of ALL.filter((m) => !tier.methods.includes(m))) {
+    item[method] = {
+      summary: `${tier.label} (method not allowed)`,
+      operationId: `${tier.id}-${method}-not-allowed`,
+      tags: [tier.label],
+      responses: { 405: { description: "Method not allowed" } },
+      "x-zuplo-route": {
+        corsPolicy: "none",
+        handler: {
+          module: "$import(./modules/rate-limits)",
+          export: "methodNotAllowed",
+          options: { allow: tier.methods.map((m) => m.toUpperCase()).join(", ") },
+        },
+        policies: { inbound: [] },
       },
     };
   }

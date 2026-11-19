@@ -1,4 +1,5 @@
 import {
+  HttpProblems,
   type CustomRateLimitDetails,
   type ZuploContext,
   type ZuploRequest,
@@ -68,4 +69,10 @@ export async function warn(
     return withWarning;
   });
   return request;
+}
+
+/** Handler for methods a route does not accept. */
+export async function methodNotAllowed(request: ZuploRequest, context: ZuploContext) {
+  const allow = (context.route.handler.options as { allow: string }).allow;
+  return HttpProblems.methodNotAllowed(request, context, undefined, { allow });
 }

@@ -59,7 +59,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -67,6 +67,156 @@
               "login-warn",
               "login-block"
             ]
+          }
+        }
+      },
+      "get": {
+        "summary": "Login (method not allowed)",
+        "operationId": "login-get-not-allowed",
+        "tags": [
+          "Login"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "put": {
+        "summary": "Login (method not allowed)",
+        "operationId": "login-put-not-allowed",
+        "tags": [
+          "Login"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "patch": {
+        "summary": "Login (method not allowed)",
+        "operationId": "login-patch-not-allowed",
+        "tags": [
+          "Login"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "delete": {
+        "summary": "Login (method not allowed)",
+        "operationId": "login-delete-not-allowed",
+        "tags": [
+          "Login"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "head": {
+        "summary": "Login (method not allowed)",
+        "operationId": "login-head-not-allowed",
+        "tags": [
+          "Login"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "options": {
+        "summary": "Login (method not allowed)",
+        "operationId": "login-options-not-allowed",
+        "tags": [
+          "Login"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "POST"
+            }
+          },
+          "policies": {
+            "inbound": []
           }
         }
       }
@@ -96,7 +246,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -128,7 +278,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -160,7 +310,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -192,7 +342,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -224,7 +374,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -232,6 +382,56 @@
               "auth-warn",
               "auth-block"
             ]
+          }
+        }
+      },
+      "head": {
+        "summary": "Authentication APIs (method not allowed)",
+        "operationId": "auth-head-not-allowed",
+        "tags": [
+          "Authentication APIs"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST, PUT, PATCH, DELETE"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "options": {
+        "summary": "Authentication APIs (method not allowed)",
+        "operationId": "auth-options-not-allowed",
+        "tags": [
+          "Authentication APIs"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST, PUT, PATCH, DELETE"
+            }
+          },
+          "policies": {
+            "inbound": []
           }
         }
       }
@@ -261,7 +461,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -269,6 +469,156 @@
               "oauth-token-warn",
               "oauth-token-block"
             ]
+          }
+        }
+      },
+      "get": {
+        "summary": "OAuth token (method not allowed)",
+        "operationId": "oauth-token-get-not-allowed",
+        "tags": [
+          "OAuth token"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "put": {
+        "summary": "OAuth token (method not allowed)",
+        "operationId": "oauth-token-put-not-allowed",
+        "tags": [
+          "OAuth token"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "patch": {
+        "summary": "OAuth token (method not allowed)",
+        "operationId": "oauth-token-patch-not-allowed",
+        "tags": [
+          "OAuth token"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "delete": {
+        "summary": "OAuth token (method not allowed)",
+        "operationId": "oauth-token-delete-not-allowed",
+        "tags": [
+          "OAuth token"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "head": {
+        "summary": "OAuth token (method not allowed)",
+        "operationId": "oauth-token-head-not-allowed",
+        "tags": [
+          "OAuth token"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "options": {
+        "summary": "OAuth token (method not allowed)",
+        "operationId": "oauth-token-options-not-allowed",
+        "tags": [
+          "OAuth token"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "POST"
+            }
+          },
+          "policies": {
+            "inbound": []
           }
         }
       }
@@ -298,7 +648,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -331,7 +681,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -364,7 +714,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -397,7 +747,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -430,7 +780,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -439,6 +789,56 @@
               "restapi-warn",
               "restapi-block"
             ]
+          }
+        }
+      },
+      "head": {
+        "summary": "Public REST APIs (method not allowed)",
+        "operationId": "restapi-head-not-allowed",
+        "tags": [
+          "Public REST APIs"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST, PUT, PATCH, DELETE"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "options": {
+        "summary": "Public REST APIs (method not allowed)",
+        "operationId": "restapi-options-not-allowed",
+        "tags": [
+          "Public REST APIs"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST, PUT, PATCH, DELETE"
+            }
+          },
+          "policies": {
+            "inbound": []
           }
         }
       }
@@ -468,7 +868,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -501,7 +901,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -510,6 +910,131 @@
               "graphql-warn",
               "graphql-block"
             ]
+          }
+        }
+      },
+      "put": {
+        "summary": "GraphQL APIs (method not allowed)",
+        "operationId": "graphql-put-not-allowed",
+        "tags": [
+          "GraphQL APIs"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "patch": {
+        "summary": "GraphQL APIs (method not allowed)",
+        "operationId": "graphql-patch-not-allowed",
+        "tags": [
+          "GraphQL APIs"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "delete": {
+        "summary": "GraphQL APIs (method not allowed)",
+        "operationId": "graphql-delete-not-allowed",
+        "tags": [
+          "GraphQL APIs"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "head": {
+        "summary": "GraphQL APIs (method not allowed)",
+        "operationId": "graphql-head-not-allowed",
+        "tags": [
+          "GraphQL APIs"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "options": {
+        "summary": "GraphQL APIs (method not allowed)",
+        "operationId": "graphql-options-not-allowed",
+        "tags": [
+          "GraphQL APIs"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST"
+            }
+          },
+          "policies": {
+            "inbound": []
           }
         }
       }
@@ -539,7 +1064,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -572,7 +1097,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -605,7 +1130,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -638,7 +1163,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -671,7 +1196,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -680,6 +1205,56 @@
               "data-rest-warn",
               "data-rest-block"
             ]
+          }
+        }
+      },
+      "head": {
+        "summary": "Data MS REST APIs (method not allowed)",
+        "operationId": "data-rest-head-not-allowed",
+        "tags": [
+          "Data MS REST APIs"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST, PUT, PATCH, DELETE"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "options": {
+        "summary": "Data MS REST APIs (method not allowed)",
+        "operationId": "data-rest-options-not-allowed",
+        "tags": [
+          "Data MS REST APIs"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST, PUT, PATCH, DELETE"
+            }
+          },
+          "policies": {
+            "inbound": []
           }
         }
       }
@@ -709,7 +1284,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -744,7 +1319,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -779,7 +1354,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -792,9 +1367,109 @@
             ]
           }
         }
+      },
+      "put": {
+        "summary": "MCP (method not allowed)",
+        "operationId": "mcp-put-not-allowed",
+        "tags": [
+          "MCP"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST, DELETE"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "patch": {
+        "summary": "MCP (method not allowed)",
+        "operationId": "mcp-patch-not-allowed",
+        "tags": [
+          "MCP"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST, DELETE"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "head": {
+        "summary": "MCP (method not allowed)",
+        "operationId": "mcp-head-not-allowed",
+        "tags": [
+          "MCP"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST, DELETE"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      },
+      "options": {
+        "summary": "MCP (method not allowed)",
+        "operationId": "mcp-options-not-allowed",
+        "tags": [
+          "MCP"
+        ],
+        "responses": {
+          "405": {
+            "description": "Method not allowed"
+          }
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "module": "$import(./modules/rate-limits)",
+            "export": "methodNotAllowed",
+            "options": {
+              "allow": "GET, POST, DELETE"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
       }
     },
-    "/((?!login$|api/auth/|oauth/token$|api/restapi/|api/graphql$|data/rest/|mcp$|\\.well-known/jwks\\.json$).*)": {
+    "/(.*)": {
       "x-zuplo-path": {
         "pathMode": "url-pattern"
       },
@@ -819,7 +1494,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -851,7 +1526,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -883,7 +1558,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -915,7 +1590,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -947,7 +1622,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -979,7 +1654,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
@@ -1011,7 +1686,7 @@
             "module": "$import(@zuplo/runtime)",
             "export": "urlForwardHandler",
             "options": {
-              "baseUrl": "${env.ORIGIN_URL ?? 'https://echo.zuplo.io'}"
+              "baseUrl": "https://echo.zuplo.io"
             }
           },
           "policies": {
