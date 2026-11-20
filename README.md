@@ -1,7 +1,8 @@
 # Rate Limiting Gateway
 
 A Zuplo gateway that applies a warning threshold and a blocking threshold to
-each API category, then forwards the request to the origin unchanged.
+each API category. There is no origin yet: every route returns "Hello world"
+from `modules/hello-world.ts`.
 
 ## Thresholds
 
@@ -59,10 +60,10 @@ bearer token.
 
 ## Configuration
 
-The origin, token issuer and JWKS URL are constants at the top of
-`scripts/generate-config.mjs`. They are placeholders: the origin is an echo
-service and the issuer is the stand-in IdP. Change them there and run
-`npm run generate`.
+The token issuer and JWKS URL are constants at the top of
+`scripts/generate-config.mjs`, pointing at the stand-in IdP. Change them there
+and run `npm run generate`. To forward to a real origin, swap the route handler
+in the generator for `urlForwardHandler` with that origin's `baseUrl`.
 
 ## Testing
 

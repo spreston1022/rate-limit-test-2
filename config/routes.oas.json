@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Rate Limiting Gateway",
-    "description": "Warning and blocking rate limit thresholds per API category. Requests are forwarded to the origin unchanged."
+    "description": "Warning and blocking rate limit thresholds per API category. Every route returns a hello world response."
   },
   "paths": {
     "/.well-known/jwks.json": {
@@ -50,17 +50,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -88,17 +85,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -121,17 +115,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -154,17 +145,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -187,17 +175,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -220,17 +205,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -258,17 +240,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -296,17 +275,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -329,17 +305,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -362,17 +335,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -395,17 +365,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -428,17 +395,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -466,17 +430,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -499,17 +460,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -537,17 +495,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -570,17 +525,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -603,17 +555,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -636,17 +585,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -669,17 +615,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -707,17 +650,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -742,17 +682,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -777,17 +714,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -817,17 +751,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -850,17 +781,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -883,17 +811,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -916,17 +841,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -949,17 +871,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -982,17 +901,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [
@@ -1015,17 +931,14 @@
             "description": "Blocking threshold exceeded"
           },
           "default": {
-            "description": "Response from the origin"
+            "description": "Hello world"
           }
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {
-            "module": "$import(@zuplo/runtime)",
-            "export": "urlForwardHandler",
-            "options": {
-              "baseUrl": "https://echo.zuplo.io"
-            }
+            "module": "$import(./modules/hello-world)",
+            "export": "default"
           },
           "policies": {
             "inbound": [

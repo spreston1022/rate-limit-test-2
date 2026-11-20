@@ -31,7 +31,6 @@ const tiers = [
 
 // Placeholders until the real values are known. Tokens are minted by
 // `npm run token` and verified with the public key this gateway serves.
-const ORIGIN_URL = "https://echo.zuplo.io";
 const JWT_ISSUER = "https://test-idp.rate-limit-test.local";
 const JWKS_URL =
   "https://rate-limit-test-2-main-d5e669e.oracle-poc.zuplo.work/.well-known/jwks.json";
@@ -111,16 +110,12 @@ for (const tier of tiers) {
       operationId: `${tier.id}-${method}`,
       tags: [tier.label],
       responses: {
-        default: { description: "Response from the origin" },
+        default: { description: "Hello world" },
         429: { description: "Blocking threshold exceeded" },
       },
       "x-zuplo-route": {
         corsPolicy: "none",
-        handler: {
-          module: "$import(@zuplo/runtime)",
-          export: "urlForwardHandler",
-          options: { baseUrl: ORIGIN_URL },
-        },
+        handler: { module: "$import(./modules/hello-world)", export: "default" },
         policies: { inbound },
       },
     };
@@ -153,7 +148,7 @@ const oas = {
     version: "1.0.0",
     title: "Rate Limiting Gateway",
     description:
-      "Warning and blocking rate limit thresholds per API category. Requests are forwarded to the origin unchanged.",
+      "Warning and blocking rate limit thresholds per API category. Every route returns a hello world response.",
   },
   paths: { ...jwksRoute, ...paths },
 };
